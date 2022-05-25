@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "card-flip",
+    "slug": "card-flip",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
