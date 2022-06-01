@@ -6,8 +6,10 @@ const { width } = Dimensions.get('screen');
 
 const SWIPE_THRESHOLD = 0.25 * width;
 
-export default function useCardFeatures (deck) {
+export default function useTinderCard (deck) {
   const [data, setData] = useState(deck);
+
+  console.log('DECK', data)
 
   const animation = useRef(new Animated.ValueXY()).current;
   const opacity = useRef(new Animated.Value(1)).current;
