@@ -12,8 +12,8 @@ const initialState = {
 };
 
 const getAll = () => {
-    let d = []
-    d = onValue(_db, (snapshot) => {
+    // let d = [] 
+    const d = onValue(_db, (snapshot) => {
         let allData = []
         snapshot.forEach(snap => {
             allData.push(snap.val());
