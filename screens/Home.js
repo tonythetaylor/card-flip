@@ -89,7 +89,7 @@ export default function HomeScreen({ navigation }) {
     // }
    
       return (
-      <View style={styles.backStyle}>
+      <View key={index} style={styles.backStyle}>
         <View style={styles.card}>
           {/* <Image
                     style={styles.image}
@@ -275,7 +275,6 @@ export default function HomeScreen({ navigation }) {
             toValue: { x: 0, y: 0 },
             friction: 4,
             useNativeDriver: false,
-            flip: false
           }).start();
         }
       },
@@ -337,7 +336,7 @@ export default function HomeScreen({ navigation }) {
                     perspective={1000}
                     flipHorizontal={true}
                     flipVertical={false}
-                    flip={!flipEnd}
+                    flip={flipEnd}
                     clickable={true}
                     onFlipStart={(isFlipEnd) => { setFlipEnd(isFlipEnd), setRoomId(item.roomId), console.log(isFlipEnd)}}
                     // onFlipEnd={(isFlipEnd) => { setFlipEnd(!flipEnd), setRoomId(item.roomId), console.log(isFlipEnd)}}
