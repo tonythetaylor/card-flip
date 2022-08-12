@@ -9,7 +9,8 @@ import {
   Dimensions,
   Image,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import { Card, Header, Button } from 'react-native-elements';
 import { List, Divider } from 'react-native-paper';
@@ -72,7 +73,7 @@ export default function HomeScreen({ navigation }) {
   };
 
   const renderBack = (item, index) => {
-    console.log('BACK CARD: ', roomId,index)
+    console.log('BACK CARD: ', roomId, index)
     // navigation.navigate('Cards', { thread: item.roomId })
     // for(const th in threads) {
     //   if(threads[th].roomId === roomId) {
@@ -87,8 +88,8 @@ export default function HomeScreen({ navigation }) {
     // ));
     //   }
     // }
-   
-      return (
+
+    return (
       <View key={index} style={styles.backStyle}>
         <View style={styles.card}>
           {/* <Image
@@ -107,7 +108,7 @@ export default function HomeScreen({ navigation }) {
           />
         </View>
       </View>
-    ) 
+    )
   };
 
   const renderNoMoreCards = () => {
@@ -151,7 +152,7 @@ export default function HomeScreen({ navigation }) {
         }}
           onPress={signOutNow}
         >
-          <Text>logout</Text>
+          <Text style={{ color: 'white' }}>logout</Text>
         </TouchableOpacity>
       )
     })
@@ -170,9 +171,9 @@ export default function HomeScreen({ navigation }) {
             }))
           ));
 
-        if (loading) {
-          setLoading(false);
-        }
+          if (loading) {
+            setLoading(false);
+          }
 
           return () => unsubscribe();
         }
@@ -182,9 +183,9 @@ export default function HomeScreen({ navigation }) {
 
   }, [navigation, roomId]);
 
-  const onSend = useCallback((messages = []) => { 
+  const onSend = useCallback((messages = []) => {
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-   
+
     const { _id, createdAt, text, user } = messages[0]
 
     addDoc(collection(db, 'chat-rooms', roomId, 'messages'), { _id, createdAt, text, user });
@@ -225,8 +226,8 @@ export default function HomeScreen({ navigation }) {
     // getData(threads)
 
     setLoading(false)
-    if(roomId.length !== 0) {
-          renderBack(roomId)
+    if (roomId.length !== 0) {
+      renderBack(roomId)
     }
 
 
@@ -338,15 +339,15 @@ export default function HomeScreen({ navigation }) {
                     flipVertical={false}
                     flip={flipEnd}
                     clickable={true}
-                    onFlipStart={(isFlipEnd) => { setFlipEnd(isFlipEnd), setRoomId(item.roomId), console.log(isFlipEnd)}}
-                    // onFlipEnd={(isFlipEnd) => { setFlipEnd(!flipEnd), setRoomId(item.roomId), console.log(isFlipEnd)}}
+                    onFlipStart={(isFlipEnd) => { setFlipEnd(isFlipEnd), setRoomId(item.roomId), console.log(isFlipEnd) }}
+                  // onFlipEnd={(isFlipEnd) => { setFlipEnd(!flipEnd), setRoomId(item.roomId), console.log(isFlipEnd)}}
                   >
                     {renderFront(item)}
                     <>
-                    {renderBack(item, items)}
+                      {renderBack(item, items)}
                     </>
-                    
-                    
+
+
                   </FlipCard>
                 ) : console.log(items.length)}
               </Animated.View>
@@ -370,17 +371,17 @@ const styles = StyleSheet.create({
     zIndex: 1
   },
   frontStyle: {
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
+    width: SCREEN_WIDTH - 30,
+    height: SCREEN_HEIGHT - 125,
     padding: 10,
-    backgroundColor: 'purple',
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
   },
   backStyle: {
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT - 225,
+    width: SCREEN_WIDTH - 30,
+    height: SCREEN_HEIGHT - 125,
     padding: 10,
     backgroundColor: '#000',
     justifyContent: 'center',
@@ -388,8 +389,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   card: {
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
+    flexGrow: 1,
+    width: SCREEN_WIDTH - 30,
+    height: SCREEN_HEIGHT - 125,
     backgroundColor: '#f4f4f4',
     position: 'absolute',
     borderRadius: 20,
