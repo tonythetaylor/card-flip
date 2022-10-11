@@ -1,8 +1,18 @@
 {
   "expo": {
-    "name": "card-flip",
-    "slug": "card-flip",
+    "name": "random-qh",
+    "slug": "random-qh",
     "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon-120.png",
+    "splash": {
+      "image": "./assets/splash-rqh.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "assetBundlePatterns": [
       "**/*"
     ],

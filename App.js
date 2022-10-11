@@ -18,6 +18,8 @@ import ChatScreen from './screens/Chat';
 import HomeScreen from './screens/Home';
 import AddCardScreen from './screens/AddCard';
 
+import { StatusBar } from 'expo-status-bar';
+
 const warn = console.warn;
 console.warn = (...arg) => {
   for (let i = 0; i < ignoreWarns.length; i++) {
@@ -33,6 +35,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar style="light" />
       <Stack.Navigator
         screenOptions={{
           headerStyle: { backgroundColor: 'black' },
