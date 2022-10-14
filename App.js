@@ -11,14 +11,18 @@ const ignoreWarns = [
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native';
-import CardsScreen from './screens/Cards';
+import CardScreen from './screens/Cards';
 import LoginScreen from './screens/Login';
 import RegisterScreen from './screens/Register';
 import ChatScreen from './screens/Chat';
-import HomeScreen from './screens/Home';
+import CardsScreen from './screens/CardsScreen';
 import AddCardScreen from './screens/AddCard';
 
 import { StatusBar } from 'expo-status-bar';
+
+import { CardsMainStackNavigator } from './navigation/StackNavigator';
+
+import RootNavigation from './navigation';
 
 const warn = console.warn;
 console.warn = (...arg) => {
@@ -34,27 +38,29 @@ const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <StatusBar style="light" />
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: { backgroundColor: 'black' },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontFamily: 'Cochin',
-            fontWeight: 'bold',
-            fontSize: 20,
-          }
-        }}
-      >
-        <Stack.Screen name='RQH' component={HomeScreen} />
-        <Stack.Screen name='Cards' component={CardsScreen} />
-        <Stack.Screen name='Login' component={LoginScreen} />
-        <Stack.Screen name='Register' component={RegisterScreen} />
-        <Stack.Screen name='Chat' component={ChatScreen} />
-        <Stack.Screen name='AddRoom' component={AddCardScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <RootNavigation />
+    // <NavigationContainer>
+    //   <StatusBar style="light" />
+    //   <CardsMainStackNavigator />
+    //   <Stack.Navigator
+    //     screenOptions={{
+    //       headerStyle: { backgroundColor: 'black' },
+    //       headerTintColor: '#fff',
+    //       headerTitleStyle: {
+    //         fontFamily: 'Cochin',
+    //         fontWeight: 'bold',
+    //         fontSize: 20,
+    //       }
+    //     }}
+    //   >
+    //     <Stack.Screen name='RQH' component={CardsScreen} />
+    //     <Stack.Screen name='Cards' component={CardScreen} />
+    //     <Stack.Screen name='Login' component={LoginScreen} />
+    //     <Stack.Screen name='Register' component={RegisterScreen} />
+    //     <Stack.Screen name='Chat' component={ChatScreen} />
+    //     <Stack.Screen name='AddRoom' component={AddCardScreen} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 };
 

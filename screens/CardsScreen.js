@@ -73,7 +73,8 @@ export default function HomeScreen({ navigation }) {
   };
 
   const renderBack = (item, index) => {
-    console.log('BACK CARD: ', roomId, index)
+    if (index === undefined) return []
+    console.log('BACK CARD : ', index[0]['roomId'])
     // navigation.navigate('Cards', { thread: item.roomId })
     // for(const th in threads) {
     //   if(threads[th].roomId === roomId) {
@@ -114,15 +115,19 @@ export default function HomeScreen({ navigation }) {
   const renderNoMoreCards = () => {
     return (
       <View style={styles.noMoreCardsContainer}>
-        <Text style={[styles.text, styles.noMoreCardsText]}>All Done!</Text>
-        <Button onPress={resetDeck} color='#5f9ea0' title="Again!" titleStyle={styles.text} />
+        <Text style={[styles.text, styles.noMoreCardsText]}>YOU'VE REACHED THE END OF THE DECK!</Text>
+        <View style={[styles.textButtonContainer]}>
+          <Text onPress={resetDeck} style={[styles.textButton]}>RESET</Text>
+        </View>
       </View>
     );
   }
 
   const resetDeck = () => {
-    getData()
-    console.log('RESET ME!')
+    console.log('RESET THE DECK: ')
+
+    // getData()
+    setThreads(rqhData)
   }
 
   const signOutNow = () => {
@@ -425,6 +430,18 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     padding: 10
+  },
+  textButtonContainer: {
+    borderRadius: 10,
+    backgroundColor: '#000',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textButton: {
+    padding: 10,
+    color: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   nameText: {
     fontSize: 16,
