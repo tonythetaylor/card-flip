@@ -9,6 +9,7 @@ import CardsScreen from '../screens/CardsScreen';
 import AddCardScreen from '../screens/AddCard';
 
 import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "../screens/HomeScreen";
 
 const CardsMainStack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const CardsMainStackNavigator = () => {
             fontSize: 20,
           },
           headerShown: false,
+          initialRouteName: 'CardsScreen'
         }}
       >
         <CardsMainStack.Screen name='CardsScreen' component={CardsScreen} />

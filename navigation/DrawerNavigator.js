@@ -10,6 +10,7 @@ import { getAuth, signOut } from 'firebase/auth';
 import { useAuthentication, signOutNow } from '../utils/hooks/useAuthentication';
 
 import { Avatar } from 'react-native-elements';
+import HomeScreen from "../screens/HomeScreen";
 
 const auth = getAuth();
 
@@ -80,7 +81,7 @@ const DrawerNavigator = () => {
       },
     }}
       drawerContent={props => <AppDrawerContent {...props} />}>
-      <Drawer.Screen name="Home" component={CardsMainStackNavigator} />
+      <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="RQH" component={CardsMainStackNavigator} />
     </Drawer.Navigator>
   );

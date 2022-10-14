@@ -16,7 +16,7 @@ const Login = ({navigation}) => {
     const signin = () => {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          navigation.navigate('RQH');
+          navigation.navigate('HomeScreen');
         })
         .catch((error) => {
           const errorCode = error.code;
